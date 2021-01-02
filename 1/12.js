@@ -1,8 +1,7 @@
 const readline = require('readline');
 
-const calculateFunc = (data) =>{
+const calculateFunc = (temp) =>{
   let result = 0
-  let temp = Number(data)
   while(temp !== 0) {
     if(temp > 99){
       temp = temp - 100
@@ -31,8 +30,14 @@ const run = () => {
     output: process.stdout
   })
   rl.question(`Input\n`, (answer) => {
-    calculateFunc(answer)
-    rl.close()
+    const data = Number(answer)
+    if(!Number.isNaN(data)){
+      calculateFunc(data)
+      rl.close()
+    } else {
+      console.info('Warning : Input must be Number')
+      rl.close()
+    }
   })
 }
 
